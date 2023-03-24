@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComunaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("/", [ComunaController::class,"index"])->name("comuna.index");
+
+//ruta para añadir un nuevo registro
+Route::post("/nuevo-registro", [ComunaController::class,"create"])->name("comuna.create");
+
+// ruta para editar un registro
+Route::post("/editar-registro", [ComunaController::class,"update"])->name("comuna.update");
